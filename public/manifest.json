@@ -1,6 +1,6 @@
 {
-  "name": "css-generator",
-  "short_name": "css-generator",
+  "name": "photo-finder",
+  "short_name": "photo-finder",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
