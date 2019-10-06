@@ -82,7 +82,7 @@ export default {
     &__list {
       display: flex;
       flex-wrap: wrap;
-      margin: 0 -5px;
+      margin: 0 -15px;
       padding: 0;
       list-style-type: none;
     }
@@ -90,9 +90,11 @@ export default {
       position: relative;
       display: flex;
       flex-grow: 1;
-      flex-basis: calc(25% - 10px);
+      flex-basis: calc(25% - 30px);
       min-width: 250px;
-      margin: 5px;
+      margin: 15px;
+      border-radius: 20px;
+      box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
       overflow: hidden;
       cursor: pointer;
       &:hover .gallery-viewer__footer {
@@ -132,10 +134,12 @@ export default {
     }
     &__link {
       display: block;
-      padding: 4px 8px;
+      padding: 6px 12px;
       color: #ffffff;
+      font-size: 18px;
       text-decoration: none;
       border: 1px solid #ffffff;
+      border-radius: 20px;
       transition: all 0.2s ease-in;
       &:hover {
         color: #303030;
@@ -144,27 +148,36 @@ export default {
     }
     &__link--tag {
       margin: 5px;
+      padding: 3px 6px;
+      font-size: 16px;
     }
   }
 
 .search {
     display: flex;
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
     &__input,
     &__button {
       padding: 8px 12px;
-      border: 1px solid #606060;
+      border: none;
     }
     &__input {
       flex-grow: 1;
-      border-right: 0;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
     }
     &__button {
-      background-color: transparent;
+      min-width: 120px;
+      color: #ffffff;
+      background-color: #606060;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
       cursor: pointer;
       transition: background-color 0.2s ease-in, color 0.2s ease-in;
       &:hover {
-        color: #ffffff;
-        background-color: #606060;
+        color: #606060;
+        background-color: transparent;
       }
     }
   }

@@ -2,7 +2,6 @@
   <div id="app">
 		<div class="container">
 			<app-header></app-header>
-			<!-- <app-nav></app-nav> -->
 			<router-view/>
 		</div>
   </div>
@@ -16,6 +15,8 @@ body {
 .container {
 	max-width: 1600px;
 	margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 #app {
 	padding-top: 100px;
@@ -24,5 +25,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: #f3f3f3;
 }
 </style>

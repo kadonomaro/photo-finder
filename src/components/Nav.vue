@@ -29,19 +29,24 @@
     &__item {
       flex-grow: 1;
       margin: 5px;
-      border: 1px solid #606060;
+
     }
     &__link {
       display: block;
       min-width: 60px;
-      padding: 8px 4px;
+      padding: 6px 10px;
       color: #303030;
+      border-radius: 50px;
       text-decoration: none;
       transition: color 0.2s ease-in,background-color 0.2s ease-in;
       &:hover {
         color: #ffffff;
-        background-color: #303030;
+        background-color: #606060;
       }
+    }
+    &__link.router-link-exact-active {
+      color: #ffffff;
+      background-color: #909090;
     }
   }
 </style>
