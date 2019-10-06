@@ -4,11 +4,13 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
+import Header from './components/Header.vue';
 import Nav from './components/Nav.vue';
 import GalleryViewer from './components/GalleryViewer';
 
 Vue.config.productionTip = false;
 
+Vue.component('app-header', Header);
 Vue.component('app-nav', Nav);
 Vue.component('gallery-viewer', GalleryViewer);
 
