@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <div :class="['logo', {'logo--light': theme === 'light'}]">
     <div class="logo__img"></div>
     <h1 class="logo__title">Photo Finder</h1>
   </div>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-
+  props: ['theme']
 };
 </script>
 
@@ -16,6 +16,7 @@ export default {
     display: flex;
     align-items: center;
     padding: 5px 15px 5px 5px;
+    color: #ffffff;
     background-color: #909090;
     border-radius: 40px;
     &__img {
@@ -27,8 +28,11 @@ export default {
     }
     &__title {
       margin: 0;
-      color: #ffffff;
       font-size: 24px;
     }
+  }
+  .logo--light {
+    color: #909090;
+    background-color: #ffffff;
   }
 </style>
