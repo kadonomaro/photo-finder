@@ -3,7 +3,7 @@
 
     <div class="gallery-viewer__search">
       <form action="" class="search">
-        <input type="search" class="search__input" v-model="query">
+        <input type="search" class="search__input" v-model="query" placeholder="What would you like to find?">
         <button class="search__button" @click.prevent="fetchImages(query)">Search</button>
       </form>
     </div>
@@ -161,8 +161,9 @@ export default {
     &__input,
     &__button {
       padding: 8px 12px;
-      outline: none;
+      font-size: 18px;
       border: 2px solid transparent;
+      outline: none;
       &:hover,
       &:focus {
         border-color: #606060;
@@ -172,12 +173,12 @@ export default {
       flex-grow: 1;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
+      border-right-width: 0px;
       transition: border-color 0.2s ease-in;
     }
     &__button {
       min-width: 120px;
       color: #ffffff;
-      font-size: 18px;
       background-color: #606060;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;

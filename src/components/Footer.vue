@@ -5,7 +5,7 @@
         <logo class="footer__logo" :theme="logoTheme"></logo>
         <div class="footer__text">
           <p>
-            This site uses the free api to search for images <a href="https://pixabay.com" class="">pixabay.com</a>
+            This site uses the free api to search for images – <a class="footer__link" href="https://pixabay.com">pixabay.com</a>
           </p>
         </div>
       </div>
@@ -39,6 +39,11 @@ export default {
     }
     &__col {
       flex-basis: 33.3333%;
+    }
+    &__link {
+      color: inherit;
+      font-size: 20px;
+      text-decoration: none;
     }
   }
 </style>

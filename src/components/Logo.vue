@@ -1,5 +1,5 @@
 <template>
-  <div :class="['logo', {'logo--light': theme === 'light'}]">
+  <div :class="['logo', {'logo--light': theme === 'light'}]" @click="gotoHome">
     <div class="logo__img"></div>
     <h1 class="logo__title">Photo Finder</h1>
   </div>
@@ -7,7 +7,17 @@
 
 <script>
 export default {
-  props: ['theme']
+  props: ['theme'],
+  data(){
+    return{
+
+    }
+  },
+  methods: {
+    gotoHome(){
+      this.$router.push({ path: '/' })
+    }
+  }
 };
 </script>
 
@@ -19,6 +29,7 @@ export default {
     color: #ffffff;
     background-color: #909090;
     border-radius: 40px;
+    cursor: pointer;
     &__img {
       width: 40px;
       height: 40px;

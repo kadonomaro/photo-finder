@@ -24,7 +24,7 @@ export default {
     left: 10%;
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: #ffffff;
     border-radius: 100px;
     box-shadow: 0 5px 15px rgba($color: #000000, $alpha: 0.3);
