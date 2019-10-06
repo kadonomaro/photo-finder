@@ -160,24 +160,32 @@ export default {
     &__input,
     &__button {
       padding: 8px 12px;
-      border: none;
+      outline: none;
+      border: 2px solid transparent;
+      &:hover,
+      &:focus {
+        border-color: #606060;
+      }
     }
     &__input {
       flex-grow: 1;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
+      transition: border-color 0.2s ease-in;
     }
     &__button {
       min-width: 120px;
       color: #ffffff;
+      font-size: 18px;
       background-color: #606060;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
+      transition: background-color 0.2s ease-in, color 0.2s ease-in, border-color 0.2s ease-in;
       cursor: pointer;
-      transition: background-color 0.2s ease-in, color 0.2s ease-in;
-      &:hover {
-        color: #606060;
-        background-color: transparent;
+      &:hover,
+      &:focus {
+        color: #303030;
+        background-color: #cccccc;
       }
     }
   }

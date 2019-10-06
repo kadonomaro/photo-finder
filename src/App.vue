@@ -19,12 +19,28 @@ body {
   box-sizing: border-box;
 }
 #app {
-	padding-top: 100px;
+  position: relative;
+  z-index: 1;
+	padding-top: 120px;
   color: #303030;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #f3f3f3;
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -120px;
+    right: -200px;
+    width: 50%;
+    padding-bottom: 50%;
+    background-image: url('./assets/background/background-1.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.7;
+  }
 }
 </style>

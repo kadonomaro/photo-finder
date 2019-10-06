@@ -1,15 +1,14 @@
 <template>
   <header class="header">
-    <div class="header__logo"></div>
-    <h1 class="header__title">Photo Finder</h1>
+    <logo class="header__logo"></logo>
     <app-nav class="header__nav"></app-nav>
   </header>
 </template>
 
 <script>
 export default {
-	name: "Header"
-	};
+
+}
 </script>
 
 <style lang="scss">
@@ -24,16 +23,10 @@ export default {
     padding: 10px 20px;
     background-color: #ffffff;
     border-radius: 100px;
-    box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
-    &__logo {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-      background-color: #303030;
-    }
-    &__title {
-      margin: 0;
-      font-size: 24px;
+    box-shadow: 0 5px 15px rgba($color: #000000, $alpha: 0.3);
+    transition: box-shadow 0.2s ease-in;
+    &:hover {
+      box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
     }
     &__nav {
       margin-left: auto;
