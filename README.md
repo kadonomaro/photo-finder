@@ -1,4 +1,4 @@
-# css-generator
+# photo-finder
 
 ## Project setup
 ```
