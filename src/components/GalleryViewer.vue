@@ -66,7 +66,7 @@ export default {
           this.largeImageSource.push(data.hits[i].largeImageURL);
           this.imageTags.push(data.hits[i].tags);
         }
-        console.log(data.hits);
+        // console.log(data.hits);
       })
     }
   }

@@ -14,6 +14,12 @@
 </template>
 
 <style lang="scss">
+.container {
+	max-width: 1600px;
+	margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
 #app {
   position: relative;
   z-index: 1;

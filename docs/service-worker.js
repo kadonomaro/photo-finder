@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/photo-finder/precache-manifest.d03d860358b5f2f401442d90a70c647a.js"
+  "/photo-finder/precache-manifest.340ee1e980d980165631527b4a153a11.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "photo-finder"});
