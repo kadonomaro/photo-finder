@@ -19,7 +19,7 @@
 
 <style lang="scss">
   .nav {
-
+    text-align: center;
     &__list {
       display: flex;
       margin: 0;

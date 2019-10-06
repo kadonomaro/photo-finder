@@ -3,6 +3,11 @@
     <div class="footer__row">
       <div class="footer__col">
         <logo class="footer__logo" :theme="logoTheme"></logo>
+        <div class="footer__text">
+          <p>
+            This site uses the free api to search for images <a href="https://pixabay.com" class="">pixabay.com</a>
+          </p>
+        </div>
       </div>
       <div class="footer__col">
 

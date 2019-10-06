@@ -95,7 +95,7 @@ export default {
       margin: 15px;
       text-align: center;
       border-radius: 20px;
-      box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
+      box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
       overflow: hidden;
       cursor: pointer;
       &:hover .gallery-viewer__footer {

@@ -29,9 +29,6 @@ export default {
     border-radius: 100px;
     box-shadow: 0 5px 15px rgba($color: #000000, $alpha: 0.3);
     transition: box-shadow 0.2s ease-in;
-    &:hover {
-      box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
-    }
     &__nav {
       margin-left: auto;
     }

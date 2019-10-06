@@ -14,22 +14,12 @@
 </template>
 
 <style lang="scss">
-body {
-	margin: 0;
-}
-
-.container {
-	max-width: 1600px;
-	margin: 0 auto;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
 #app {
   position: relative;
   z-index: 1;
 	padding-top: 120px;
   color: #303030;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f3f3f3;
