@@ -1,9 +1,15 @@
 <template>
   <div id="app">
+
 		<div class="container">
+
 			<app-header></app-header>
 			<router-view/>
+
 		</div>
+
+    <app-footer></app-footer>
+
   </div>
 </template>
 
@@ -26,7 +32,6 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   background-color: #f3f3f3;
   overflow: hidden;
   &::before {
@@ -40,7 +45,7 @@ body {
     background-image: url('./assets/background/background-1.svg');
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.7;
+    opacity: 0.5;
   }
 }
 </style>

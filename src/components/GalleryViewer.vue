@@ -93,6 +93,7 @@ export default {
       flex-basis: calc(25% - 30px);
       min-width: 250px;
       margin: 15px;
+      text-align: center;
       border-radius: 20px;
       box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
       overflow: hidden;

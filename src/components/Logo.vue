@@ -13,7 +13,7 @@ export default {
 
 <style lang="scss">
   .logo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     padding: 5px 15px 5px 5px;
     color: #ffffff;
