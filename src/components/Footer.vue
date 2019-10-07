@@ -10,6 +10,15 @@
         </div>
       </div>
       <div class="footer__col">
+        <div class="popular-tags">
+          <ul class="popular-tags__list">
+            <li class="popular-tags__item"></li>
+            <li class="popular-tags__item"></li>
+            <li class="popular-tags__item"></li>
+            <li class="popular-tags__item"></li>
+            <li class="popular-tags__item"></li>
+          </ul>
+        </div>
 
       </div>
       <div class="footer__col">
