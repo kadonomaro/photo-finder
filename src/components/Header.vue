@@ -1,5 +1,5 @@
 <template>
-  <header :class="['header',{'header--narrow': isNarrow}]" @mouseenter="toggleNarrow">
+  <header :class="['header',{'header--narrow': isNarrow}]" @mouseenter="removeNarrow" v-scroll="scrollHandler">
     <logo class="header__logo"></logo>
     <app-nav class="header__nav" v-show="!isNarrow"></app-nav>
   </header>
@@ -13,9 +13,18 @@ export default {
     }
   },
   methods: {
-    toggleNarrow(){
-      this.isNarrow = !this.isNarrow;
+    removeNarrow(){
+      this.isNarrow = false;
     },
+    scrollHandler(){
+      let windowStart = window.scrollY;
+      if (window.scrollY > 100) {
+        setTimeout(() => {
+          this.isNarrow = true;
+        }, 200);
+      }
+
+    }
 
   }
 }

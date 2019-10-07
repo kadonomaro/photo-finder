@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import "./app.css";
 import './registerServiceWorker';
+import './directives';
 
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
