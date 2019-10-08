@@ -1,15 +1,30 @@
 <template>
   <div class="gallery-viewer">
-
     <div class="gallery-viewer__search">
       <form action="" class="search">
-        <input type="search" class="search__input" v-model="query" placeholder="What would you like to find?">
+        <input
+          type="search"
+          class="search__input"
+          v-model="query"
+          placeholder="What would you like to find?"
+        >
         <button class="search__button" @click.prevent="fetchImages(query)">Search</button>
       </form>
     </div>
 
     <ul class="gallery-viewer__list">
-      <li class="gallery-viewer__item" v-for="(source, index) in previewImageSource" :key="index">
+      <app-picture
+      class="gallery-viewer__item"
+      v-for="(image, index) in previewImageSource"
+      :key="index"
+      :previewImage="image"
+      :largeImage="largeImageSource[index]"
+      :imageTag="imageTags[index]"
+      ></app-picture>
+    </ul>
+
+    <!--<ul class="gallery-viewer__list">
+       <li class="gallery-viewer__item" v-for="(source, index) in previewImageSource" :key="index">
         <div class="gallery-viewer__tags">
           <a class="gallery-viewer__link gallery-viewer__link--tag"
             v-for="(tag, index) in imageTags[index].split(',')"
@@ -26,7 +41,7 @@
           <a :href="largeImageSource[index]" class="gallery-viewer__link">Download</a>
         </div>
       </li>
-    </ul>
+    </ul>-->
 
   </div>
 </template>
@@ -87,70 +102,10 @@ export default {
       list-style-type: none;
     }
     &__item {
-      position: relative;
-      display: flex;
       flex-grow: 1;
       flex-basis: calc(25% - 30px);
       min-width: 250px;
       margin: 15px;
-      text-align: center;
-      border-radius: 20px;
-      box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
-      overflow: hidden;
-      cursor: pointer;
-      &:hover .gallery-viewer__footer {
-        transform: translateY(-100%);
-      }
-      &:hover .gallery-viewer__tags {
-        transform: translateY(100%);
-      }
-    }
-    &__image {
-      display: block;
-      max-width: 100%;
-      object-fit: cover;
-    }
-    &__tags, &__footer {
-      position: absolute;
-      left: 0;
-      right: 0;
-      background-color: rgba($color: #000000, $alpha: 0.5);
-      transition: transform 0.2s ease-in;
-    }
-    &__tags {
-      top: -50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50px;
-      color: #ffffff;
-      font-size: 18px;
-    }
-    &__footer {
-      bottom: -50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50px;
-    }
-    &__link {
-      display: block;
-      padding: 6px 12px;
-      color: #ffffff;
-      font-size: 18px;
-      text-decoration: none;
-      border: 1px solid #ffffff;
-      border-radius: 20px;
-      transition: all 0.2s ease-in;
-      &:hover {
-        color: #303030;
-        background-color: #ffffff;
-      }
-    }
-    &__link--tag {
-      margin: 5px;
-      padding: 3px 6px;
-      font-size: 16px;
     }
   }
 
