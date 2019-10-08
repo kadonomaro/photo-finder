@@ -14,34 +14,15 @@
 
     <ul class="gallery-viewer__list">
       <app-picture
-      class="gallery-viewer__item"
-      v-for="(image, index) in previewImageSource"
-      :key="index"
-      :previewImage="image"
-      :largeImage="largeImageSource[index]"
-      :imageTag="imageTags[index]"
+        class="gallery-viewer__item"
+        v-for="(image, index) in previewImageSource"
+        :key="index"
+        :previewImage="image"
+        :largeImage="largeImageSource[index]"
+        :imageTag="imageTags[index]"
+        :FetchImageData="fetchImages"
       ></app-picture>
     </ul>
-
-    <!--<ul class="gallery-viewer__list">
-       <li class="gallery-viewer__item" v-for="(source, index) in previewImageSource" :key="index">
-        <div class="gallery-viewer__tags">
-          <a class="gallery-viewer__link gallery-viewer__link--tag"
-            v-for="(tag, index) in imageTags[index].split(',')"
-            :key="index"
-            @click.prevent="fetchImages(tag)">
-            {{ tag }}
-          </a>
-        </div>
-        <img class="gallery-viewer__image"
-          :src="source"
-          :alt="imageTags[index]"
-        >
-        <div class="gallery-viewer__footer">
-          <a :href="largeImageSource[index]" class="gallery-viewer__link">Download</a>
-        </div>
-      </li>
-    </ul>-->
 
   </div>
 </template>
@@ -102,6 +83,7 @@ export default {
       list-style-type: none;
     }
     &__item {
+      display: flex;
       flex-grow: 1;
       flex-basis: calc(25% - 30px);
       min-width: 250px;

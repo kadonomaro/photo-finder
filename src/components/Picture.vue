@@ -6,7 +6,7 @@
           class="picture__link picture__link--tag"
           v-for="(tag, index) in imageTag.split(',')"
           :key="index"
-          @click.prevent="fetchImages(tag)"
+          @click.prevent="FetchImageData(tag)"
         >{{ tag }}</a>
       </div>
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
@@ -19,9 +19,14 @@
 
 <script>
 export default {
-  props: ["previewImage", "largeImage", "imageTag"],
+  props: ["previewImage", "largeImage", "imageTag", "FetchImageData"],
   data() {
-    return {};
+    return {
+
+    };
+  },
+  methods: {
+
   }
 };
 </script>
