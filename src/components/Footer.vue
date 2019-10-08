@@ -10,15 +10,6 @@
         </div>
       </div>
       <div class="footer__col">
-        <div class="popular-tags">
-          <ul class="popular-tags__list">
-            <li class="popular-tags__item"></li>
-            <li class="popular-tags__item"></li>
-            <li class="popular-tags__item"></li>
-            <li class="popular-tags__item"></li>
-            <li class="popular-tags__item"></li>
-          </ul>
-        </div>
 
       </div>
       <div class="footer__col">
@@ -42,6 +33,7 @@ export default {
   .footer {
     padding: 20px 10px;
     background-color: #cccccc;
+    box-shadow: 0 -5px 15px rgba($color: #000000, $alpha: 0.3);
     &__row {
       display: flex;
       flex-wrap: wrap;

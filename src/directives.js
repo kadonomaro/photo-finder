@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import throttle from 'lodash/throttle';
 
 Vue.directive('scroll', {
   inserted: function (el, binding) {
@@ -7,6 +8,7 @@ Vue.directive('scroll', {
         window.removeEventListener('scroll', func);
       }
     }
-    window.addEventListener('scroll', func);
+    window.addEventListener('scroll', throttle(func, 300));
+
   }
 });
