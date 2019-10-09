@@ -11,6 +11,7 @@ import Footer from './components/Footer.vue';
 import Logo from './components/Logo.vue';
 import Nav from './components/Nav.vue';
 import GalleryViewer from './components/GalleryViewer';
+import Favorite from './components/Favorite';
 import Picture from './components/Picture.vue';
 
 Vue.config.productionTip = false;
@@ -20,6 +21,7 @@ Vue.component('app-footer', Footer);
 Vue.component('logo', Logo);
 Vue.component('app-nav', Nav);
 Vue.component('gallery-viewer', GalleryViewer);
+Vue.component('favorite-image', Favorite);
 Vue.component('app-picture', Picture);
 
 new Vue({

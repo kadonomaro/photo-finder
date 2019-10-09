@@ -8,7 +8,7 @@
           v-model="query"
           placeholder="What would you like to find?"
         >
-        <button class="search__button" @click.prevent="fetchImages(query)">Search</button>
+        <button class="search__button" @click.prevent="fetchData(query)">Search</button>
       </form>
     </div>
 
@@ -20,7 +20,7 @@
         :previewImage="image"
         :largeImage="largeImageSource[index]"
         :imageTag="imageTags[index]"
-        :FetchImageData="fetchImages"
+        :FetchImageData="fetchData"
       ></app-picture>
     </ul>
 
@@ -32,39 +32,24 @@ const API_KEY = '12967020-a3deecfacc5cfa367f6aefde8';
 export default {
   data(){
     return{
-      previewImageSource: [],
-      largeImageSource: [],
-      imageTags: [],
+      previewImageSource: this.$store.state.images.previewImageSource,
+      largeImageSource: this.$store.state.images.largeImageSource,
+      imageTags: this.$store.state.images.imageTags,
       query: '',
       randomQueries: ['flowers', 'cats', 'dogs', 'bubbles', 'butterfly', 'peoples', 'winter', 'summer',]
     }
   },
   mounted(){
-    this.fetchImages(this.randomQueries[this.getRandom(0, this.randomQueries.length - 1)])
+    this.$store.dispatch('fetchData', this.randomQueries[this.getRandom(0, this.randomQueries.length - 1)])
   },
   methods: {
+    fetchData(){
+      this.$store.dispatch('fetchData', this.query);
+      this.query = '';
+    },
     getRandom(min, max){
       return Math.floor(Math.random() * (max - min + 1)) + min
     },
-    async fetchImages(query){
-      this.query = '';
-      this.previewImageSource.length = 0;
-      this.largeImageSource.length = 0;
-      this.imageTags.length = 0;
-
-      await fetch(`https://pixabay.com/api/?key=${API_KEY}&q=${query}&image_type=photo&pretty=true`)
-      .then(responce=>{
-        return responce.json();
-      })
-      .then(data=>{
-        for (let i = 0; i < data.hits.length; i++) {
-          this.previewImageSource.push(data.hits[i].webformatURL);
-          this.largeImageSource.push(data.hits[i].largeImageURL);
-          this.imageTags.push(data.hits[i].tags);
-        }
-        // console.log(data.hits);
-      })
-    }
   }
 }
 </script>

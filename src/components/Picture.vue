@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     addToFavorite(){
-      this.$store.commit('addToFavorite', this.$refs);
+
     }
   }
 };
