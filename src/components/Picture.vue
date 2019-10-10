@@ -1,7 +1,7 @@
 <template>
   <div>
     <li class="picture">
-      <div class="picture__tags" v-if="isActiveMeta">
+      <div class="picture__tags" v-if="meta">
         <a
           class="picture__link picture__link--tag"
           v-for="(tag, index) in imageTag.split(',')"
@@ -10,7 +10,7 @@
         >{{ tag }}</a>
       </div>
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
-      <div class="picture__footer" v-if="isActiveMeta">
+      <div class="picture__footer">
         <button class="picture__like" aria-label="Like picture" @click="addToFavorite(index)"></button>
         <a :href="largeImage" class="picture__link">Download</a>
       </div>
@@ -20,10 +20,10 @@
 
 <script>
 export default {
-  props: ['previewImage', 'largeImage', 'imageTag', 'FetchImageData', 'index'],
+  props: ['previewImage', 'largeImage', 'imageTag', 'FetchImageData', 'index', 'meta'],
   data() {
     return {
-      isActiveMeta: true
+
     };
   },
   methods: {

@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     API_KEY: '12967020-a3deecfacc5cfa367f6aefde8',
-    images: []
+    images: [],
+    favoriteImages: []
   },
   mutations: {
     updateData(state, data) {

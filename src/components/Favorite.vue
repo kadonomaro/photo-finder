@@ -1,13 +1,14 @@
 <template>
   <div class="favorite-image">
     <app-picture
-      class="gallery-viewer__item"
+      class="favorite-image__item"
       v-for="(image, index) in favoriteImages"
       :key="index"
       :previewImage="image.previewImageSource"
       :largeImage="image.largeImageSource"
       :imageTag="image.imageTags"
       :index="index"
+      :meta="false"
     ></app-picture>
   </div>
 </template>
@@ -26,5 +27,15 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .favorite-image {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    &__item {
+      display: flex;
+      flex-basis: calc(25% - 20px);
+      min-width: 300px;
+      margin: 10px;
+    }
+  }
 </style>

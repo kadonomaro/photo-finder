@@ -1,6 +1,6 @@
 <template>
   <section class="favorite">
-    <h2>Favorite pictures</h2>
+    <h2 class="favorite__title">Favorite pictures</h2>
     <favorite-image></favorite-image>
   </section>
 </template>
@@ -17,4 +17,13 @@ export default {
 </script>
 
 <style lang="scss">
+
+  .favorite {
+
+    &__title {
+      margin: 0 0 20px;
+      text-align: center;
+    }
+  }
+
 </style>

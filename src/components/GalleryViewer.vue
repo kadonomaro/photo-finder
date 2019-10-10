@@ -21,6 +21,7 @@
         :largeImage="image.largeImageSource"
         :imageTag="image.imageTags"
         :index="index"
+        :meta="true"
         :FetchImageData="fetchData"
       ></app-picture>
     </ul>

@@ -15,6 +15,7 @@
 
 <style lang="scss">
 .container {
+  flex-grow: 1;
 	max-width: 1600px;
 	margin: 0 auto;
   padding: 20px 10px;
@@ -23,6 +24,9 @@
 #app {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 	padding-top: 100px;
   color: #303030;
   font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
@@ -30,6 +34,7 @@
   -moz-osx-font-smoothing: grayscale;
   background-color: #f3f3f3;
   overflow: hidden;
+  box-sizing: border-box;
   &::before {
     content: '';
     position: absolute;
