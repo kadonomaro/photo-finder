@@ -1,7 +1,14 @@
 <template>
   <div class="favorite-image">
-    <div v-for="(image, index) in favoriteImage" :key="index">{{ image }}</div>
-    <button @click="filterImage">Click</button>
+    <app-picture
+      class="gallery-viewer__item"
+      v-for="(image, index) in favoriteImages"
+      :key="index"
+      :previewImage="image.previewImageSource"
+      :largeImage="image.largeImageSource"
+      :imageTag="image.imageTags"
+      :index="index"
+    ></app-picture>
   </div>
 </template>
 
@@ -9,14 +16,12 @@
 export default {
   data(){
     return {
-      favoriteImage: []
+      favoriteImages: [],
     }
   },
-  methods: {
-    filterImage(){
-      console.log(this.$store.getters.favoriteImages);
-    }
-  }
+  mounted(){
+    this.favoriteImages = this.$store.getters.favoriteImages;
+  },
 };
 </script>
 

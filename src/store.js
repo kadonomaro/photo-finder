@@ -38,8 +38,8 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    favoriteImages(state) {
-
+    favoriteImages: state => {
+      return state.images.filter(img=>img.isFavorite);
     }
   }
 
