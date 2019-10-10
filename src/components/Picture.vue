@@ -11,7 +11,7 @@
       </div>
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
       <div class="picture__footer" v-if="isActiveMeta">
-        <button class="picture__like" aria-label="Like picture" @click="addToFavorite"></button>
+        <button class="picture__like" aria-label="Like picture" @click="addToFavorite(index)"></button>
         <a :href="largeImage" class="picture__link">Download</a>
       </div>
     </li>
@@ -20,15 +20,15 @@
 
 <script>
 export default {
-  props: ["previewImage", "largeImage", "imageTag", "FetchImageData"],
+  props: ['previewImage', 'largeImage', 'imageTag', 'FetchImageData', 'index'],
   data() {
     return {
       isActiveMeta: true
     };
   },
   methods: {
-    addToFavorite(){
-
+    addToFavorite(id){
+      this.$store.commit('setFavorite', id)
     }
   }
 };

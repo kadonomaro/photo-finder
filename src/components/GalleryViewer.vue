@@ -15,11 +15,12 @@
     <ul class="gallery-viewer__list">
       <app-picture
         class="gallery-viewer__item"
-        v-for="(image, index) in previewImageSource"
+        v-for="(image, index) in images"
         :key="index"
-        :previewImage="image"
-        :largeImage="largeImageSource[index]"
-        :imageTag="imageTags[index]"
+        :previewImage="image.previewImageSource"
+        :largeImage="image.largeImageSource"
+        :imageTag="image.imageTags"
+        :index="index"
         :FetchImageData="fetchData"
       ></app-picture>
     </ul>
@@ -29,18 +30,21 @@
 
 <script>
 const API_KEY = '12967020-a3deecfacc5cfa367f6aefde8';
+let isLoaded = false;
 export default {
   data(){
     return{
-      previewImageSource: this.$store.state.images.previewImageSource,
-      largeImageSource: this.$store.state.images.largeImageSource,
-      imageTags: this.$store.state.images.imageTags,
       query: '',
-      randomQueries: ['flowers', 'cats', 'dogs', 'bubbles', 'butterfly', 'peoples', 'winter', 'summer',]
+      randomQueries: ['flowers', 'cats', 'dogs', 'bubbles', 'butterfly', 'peoples', 'winter', 'summer'],
+      images: this.$store.state.images
     }
   },
   mounted(){
-    this.$store.dispatch('fetchData', this.randomQueries[this.getRandom(0, this.randomQueries.length - 1)])
+    if (!isLoaded) {
+      this.$store.dispatch('fetchData', this.randomQueries[this.getRandom(0, this.randomQueries.length - 1)])
+      isLoaded = true;
+    }
+
   },
   methods: {
     fetchData(){
