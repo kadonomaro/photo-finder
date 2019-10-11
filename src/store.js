@@ -20,7 +20,8 @@ export default new Vuex.Store({
       });
     },
     toggleFavorite(state, id) {
-      state.images.find(img => img.id === id).isFavorite = !state.images.find(img => img.id === id).isFavorite;
+      const image = state.images.find(img => img.id === id);
+      image.isFavorite = !image.isFavorite;
     }
   },
   actions: {

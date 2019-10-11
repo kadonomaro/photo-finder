@@ -9,6 +9,7 @@
       :imageTag="image.imageTags"
       :id="image.id"
       :meta="false"
+      :isFavorite="image.isFavorite"
     ></app-picture>
   </div>
 </template>

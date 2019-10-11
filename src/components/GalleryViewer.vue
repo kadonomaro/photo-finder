@@ -22,6 +22,7 @@
         :imageTag="image.imageTags"
         :id="image.id"
         :meta="true"
+        :isFavorite="image.isFavorite"
         :FetchImageData="fetchData"
       ></app-picture>
     </ul>
