@@ -1,6 +1,7 @@
 <template>
   <nav class="nav">
-    <ul class="nav__list">
+    <button class="nav__toggle" @click="toggleNav">=</button>
+    <ul class="nav__list" v-show="isNavActive">
       <li class="nav__item"><router-link class="nav__link" to="/">Home</router-link></li>
       <li class="nav__item"><router-link class="nav__link" to="/favorite">Favorite</router-link></li>
     </ul>
@@ -11,7 +12,12 @@
   export default {
     data(){
       return {
-
+        isNavActive: false
+      }
+    },
+    methods: {
+      toggleNav(){
+        this.isNavActive = !this.isNavActive;
       }
     }
   }
@@ -20,6 +26,17 @@
 <style lang="scss">
   .nav {
     text-align: center;
+    &__toggle {
+      display: none;
+      width: 30px;
+      height: 30px;
+      color: #ffffff;
+      font-size: 24px;
+      background-color: #909090;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
     &__list {
       display: flex;
       margin: 0;
@@ -38,7 +55,7 @@
       color: #303030;
       border-radius: 50px;
       text-decoration: none;
-      transition: color 0.2s ease-in,background-color 0.2s ease-in;
+      transition: color 0.2s ease-in, background-color 0.2s ease-in;
       &:hover {
         color: #ffffff;
         background-color: #606060;
@@ -47,6 +64,25 @@
     &__link.router-link-exact-active {
       color: #ffffff;
       background-color: #909090;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .nav {
+      &__toggle {
+        display: block;
+        margin-left: auto;
+      }
+      &__list {
+        position: absolute;
+        bottom: -120px;
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 20px;
+        // display: none;
+      }
     }
   }
 </style>

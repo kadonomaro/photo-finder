@@ -35,5 +35,16 @@ export default {
   &__nav {
     margin-left: auto;
   }
+
+  @media screen and (max-width: 767px) {
+    .header {
+      &__nav {
+        position: absolute;
+        left: 10px;
+        right: 10px;
+      }
+
+    }
+  }
 }
 </style>
