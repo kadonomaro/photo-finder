@@ -6,7 +6,7 @@
           class="picture__link picture__link--tag"
           v-for="(tag, index) in imageTag.split(',')"
           :key="index"
-          @click.prevent="FetchImageData(tag)"
+          @click.prevent="fetchData(tag)"
         >{{ tag }}</a>
       </div>
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
@@ -20,13 +20,16 @@
 
 <script>
 export default {
-  props: ['id', 'previewImage', 'largeImage', 'imageTag', 'FetchImageData', 'meta', 'isFavorite'],
+  props: ['id', 'previewImage', 'largeImage', 'imageTag', 'meta', 'isFavorite'],
   data() {
     return {
 
     };
   },
   methods: {
+    fetchData(tag){
+      this.$store.dispatch('fetchData', tag);
+    },
     toggleFavorite(id){
       this.$store.commit('toggleFavorite', id);
     }
