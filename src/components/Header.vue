@@ -1,9 +1,7 @@
 <template>
   <header class="header">
     <logo class="header__logo"></logo>
-    <transition name="fade">
-      <app-nav class="header__nav"></app-nav>
-    </transition>
+    <app-nav class="header__nav"></app-nav>
   </header>
 </template>
 
