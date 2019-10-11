@@ -11,15 +11,16 @@ export default new Vuex.Store({
   },
   mutations: {
     updateData(state, data) {
-      this.state.images.push({
+      state.images.push({
+        id: data.id,
         previewImageSource: data.webformatURL,
         largeImageSource: data.largeImageURL,
         imageTags: data.tags,
         isFavorite: false
       });
     },
-    setFavorite(state, id) {
-      this.state.images[id].isFavorite = !this.state.images[id].isFavorite;
+    toggleFavorite(state, id) {
+      state.images.find(img => img.id === id).isFavorite = !state.images.find(img => img.id === id).isFavorite;
     }
   },
   actions: {
@@ -33,6 +34,7 @@ export default new Vuex.Store({
         .then(data => {
           for (let i = 0; i < data.hits.length; i++) {
             this.commit('updateData', data.hits[i]);
+            // console.log(data.hits);
           }
 
         });
@@ -40,7 +42,7 @@ export default new Vuex.Store({
   },
   getters: {
     favoriteImages: state => {
-      return state.images.filter(img=>img.isFavorite);
+      return state.images.filter(img => img.isFavorite);
     }
   }
 

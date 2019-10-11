@@ -15,12 +15,12 @@
     <ul class="gallery-viewer__list">
       <app-picture
         class="gallery-viewer__item"
-        v-for="(image, index) in images"
-        :key="index"
+        v-for="image in images"
+        :key="image.id"
         :previewImage="image.previewImageSource"
         :largeImage="image.largeImageSource"
         :imageTag="image.imageTags"
-        :index="index"
+        :id="image.id"
         :meta="true"
         :FetchImageData="fetchData"
       ></app-picture>

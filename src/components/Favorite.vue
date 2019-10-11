@@ -2,12 +2,12 @@
   <div class="favorite-image">
     <app-picture
       class="favorite-image__item"
-      v-for="(image, index) in favoriteImages"
-      :key="index"
+      v-for="image in favoriteImages"
+      :key="image.id"
       :previewImage="image.previewImageSource"
       :largeImage="image.largeImageSource"
       :imageTag="image.imageTags"
-      :index="index"
+      :id="image.id"
       :meta="false"
     ></app-picture>
   </div>

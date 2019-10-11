@@ -1,7 +1,7 @@
 <template>
   <div :class="['logo', {'logo--light': theme === 'light'}]" @click="gotoHome">
     <div class="logo__img"></div>
-    <h1 class="logo__title">Photo Finder</h1>
+    <span class="logo__title">Photo Finder</span>
   </div>
 </template>
 
@@ -40,6 +40,7 @@ export default {
     &__title {
       margin: 0;
       font-size: 24px;
+      font-weight: bold;
     }
   }
   .logo--light {

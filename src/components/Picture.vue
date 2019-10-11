@@ -11,7 +11,7 @@
       </div>
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
       <div class="picture__footer">
-        <button class="picture__like" aria-label="Like picture" @click="addToFavorite(index)"></button>
+        <button class="picture__like" aria-label="Like picture" @click="toggleFavorite(id)"></button>
         <a :href="largeImage" class="picture__link">Download</a>
       </div>
     </li>
@@ -20,15 +20,15 @@
 
 <script>
 export default {
-  props: ['previewImage', 'largeImage', 'imageTag', 'FetchImageData', 'index', 'meta'],
+  props: ['id', 'previewImage', 'largeImage', 'imageTag', 'FetchImageData', 'meta'],
   data() {
     return {
 
     };
   },
   methods: {
-    addToFavorite(id){
-      this.$store.commit('setFavorite', id)
+    toggleFavorite(id){
+      this.$store.commit('toggleFavorite', id)
     }
   }
 };
