@@ -12,3 +12,16 @@ Vue.directive('scroll', {
 
   }
 });
+
+
+Vue.directive('resize', {
+  inserted: function (el, binding) {
+    let func = function (evt) {
+      if (binding.value(evt, el)) {
+        window.removeEventListener('resize', func);
+      }
+    }
+    window.addEventListener('resize', throttle(func, 300));
+
+  }
+});

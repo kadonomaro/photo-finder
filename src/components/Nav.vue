@@ -1,7 +1,7 @@
 <template>
   <nav class="nav">
     <button class="nav__toggle" @click="toggleNav">=</button>
-    <ul class="nav__list" v-show="isNavActive">
+    <ul :class="['nav__list', {'nav__list--active': isNavActive}]">
       <li class="nav__item"><router-link class="nav__link" to="/">Home</router-link></li>
       <li class="nav__item"><router-link class="nav__link" to="/favorite">Favorite</router-link></li>
     </ul>
@@ -18,7 +18,7 @@
     methods: {
       toggleNav(){
         this.isNavActive = !this.isNavActive;
-      }
+      },
     }
   }
 </script>
@@ -77,11 +77,14 @@
         position: absolute;
         bottom: -120px;
         left: 0;
+        display: none;
         flex-direction: column;
         width: 100%;
         background-color: #ffffff;
         border-radius: 20px;
-        // display: none;
+      }
+      &__list--active {
+        display: block;
       }
     }
   }
