@@ -10,6 +10,7 @@
         >
         <button class="search__button" @click.prevent="fetchData(query)">Search</button>
       </form>
+
       <div class="gallery-viewer__type">
         <div class="image-type">
           <ul class="image-type__list">
@@ -24,6 +25,7 @@
           </ul>
         </div>
       </div>
+
     </div>
 
     <ul class="gallery-viewer__list">
@@ -54,11 +56,11 @@ export default {
       imageType: [
         {
           type: 'all',
-          isActive: true
+          isActive: false
         },
         {
           type: 'photo',
-          isActive: false
+          isActive: true
         },
         {
           type: 'illustration',
@@ -74,20 +76,23 @@ export default {
   },
   mounted(){
     if (!isLoaded) {
-      this.$store.dispatch('fetchData', this.randomQueries[this.getRandom(0, this.randomQueries.length - 1)])
+      this.$store.dispatch('fetchData', [this.randomQueries[this.getRandom(0, this.randomQueries.length - 1)], this.imageType.find(type=>type.isActive).type])
       isLoaded = true;
     }
 
   },
   methods: {
     fetchData(){
-      this.$store.dispatch('fetchData', this.query);
+      this.$store.dispatch('fetchData', [this.query, this.imageType.find(type=>type.isActive).type]);
       this.query = '';
     },
     getRandom(min, max){
       return Math.floor(Math.random() * (max - min + 1)) + min
     },
     setImageType(link){
+      this.imageType.forEach(type=>{
+        type.isActive = false;
+      });
       link.isActive = true;
     }
   }
@@ -169,6 +174,11 @@ export default {
       color: #606060;
       text-decoration: none;
       border-radius: 20px;
+      transition: color 0.2s ease-in, background-color 0.2s ease-in;
+      &:hover {
+        color: #ffffff;
+        background-color: #909090;
+      }
     }
     &__link--active {
       color: #ffffff;

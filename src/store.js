@@ -32,10 +32,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async fetchData(state, query) {
+    async fetchData(state, [query, type]) {
       this.state.images.length = 0;
-
-      await fetch(`https://pixabay.com/api/?key=${this.state.API_KEY}&q=${query}&image_type=photo&pretty=true`)
+      await fetch(`https://pixabay.com/api/?key=${this.state.API_KEY}&q=${query}&image_type=${type}&pretty=true`)
         .then(responce => {
           return responce.json();
         })
