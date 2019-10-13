@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import Pagination from 'vuejs-paginate';
 import router from './router';
 import store from './store';
 import "./app.css";
@@ -23,6 +24,7 @@ Vue.component('app-nav', Nav);
 Vue.component('gallery-viewer', GalleryViewer);
 Vue.component('favorite-image', Favorite);
 Vue.component('app-picture', Picture);
+Vue.component('pagination', Pagination);
 
 new Vue({
   router,

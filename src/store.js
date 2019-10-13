@@ -34,14 +34,14 @@ export default new Vuex.Store({
   actions: {
     async fetchData(state, [query, type]) {
       this.state.images.length = 0;
-      await fetch(`https://pixabay.com/api/?key=${this.state.API_KEY}&q=${query}&image_type=${type}&pretty=true`)
+      await fetch(`https://pixabay.com/api/?key=${this.state.API_KEY}&q=${query}&image_type=${type}&pretty=true&page=1`)
         .then(responce => {
           return responce.json();
         })
         .then(data => {
           for (let i = 0; i < data.hits.length; i++) {
             this.commit('updateData', data.hits[i]);
-            // console.log(data.hits);
+            console.log(data);
           }
 
         });

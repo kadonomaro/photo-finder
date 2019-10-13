@@ -43,6 +43,12 @@
       ></app-picture>
     </ul>
 
+    <div class="gallery-viewer__pagination">
+        <pagination
+        :page-count="20"
+        :container-class="'pagination'"
+      ></pagination>
+    </div>
   </div>
 </template>
 
@@ -120,6 +126,9 @@ export default {
       min-width: 250px;
       margin: 15px;
     }
+    &__pagination {
+      margin-bottom: 20px;
+    }
   }
 
 .search {
@@ -185,6 +194,34 @@ export default {
       color: #ffffff;
       background-color: #606060;
     }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    list-style: none;
+    li {
+      margin-right: 3px;
+      color: #ffffff;
+      background-color: #909090;
+      &:first-child {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
+      &:last-child {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
+    }
+    li.active {
+      background-color: #303030;
+    }
+    a {
+      display: block;
+      padding: 8px 15px;
+    }
+
   }
 </style>
 
