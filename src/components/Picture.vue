@@ -6,13 +6,13 @@
           class="picture__link picture__link--tag"
           v-for="(tag, index) in imageTag.split(',')"
           :key="index"
-          @click.prevent="fetchData(tag)"
+          @click.prevent="fetchData([tag, type])"
         >{{ tag }}</a>
       </div>
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
       <div class="picture__footer">
         <button :class="['picture__like', {'picture__like--active': isFavorite}]" aria-label="Like picture" @click="toggleFavorite(id)"></button>
-        <a :href="largeImage" class="picture__link">Download</a>
+        <a :href="largeImage" class="picture__link">Download {{ type }}</a>
       </div>
     </li>
   </div>
@@ -20,15 +20,15 @@
 
 <script>
 export default {
-  props: ['id', 'previewImage', 'largeImage', 'imageTag', 'meta', 'isFavorite'],
+  props: ['id', 'previewImage', 'largeImage', 'imageTag', 'meta', 'isFavorite', 'type'],
   data() {
     return {
 
     };
   },
   methods: {
-    fetchData(tag){
-      this.$store.dispatch('fetchData', tag);
+    fetchData(props){
+      this.$store.dispatch('fetchData', props);
     },
     toggleFavorite(id){
       this.$store.commit('toggleFavorite', id);
@@ -42,6 +42,7 @@ export default {
     position: relative;
     display: flex;
     text-align: center;
+    background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
     overflow: hidden;

@@ -39,6 +39,7 @@
         :id="image.id"
         :meta="true"
         :isFavorite="image.isFavorite"
+        :type="imageType.find(type=>type.isActive).type"
       ></app-picture>
     </ul>
 
