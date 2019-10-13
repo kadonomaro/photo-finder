@@ -10,6 +10,20 @@
         >
         <button class="search__button" @click.prevent="fetchData(query)">Search</button>
       </form>
+      <div class="gallery-viewer__type">
+        <div class="image-type">
+          <ul class="image-type__list">
+            <li class="image-type__item"
+              v-for="(link, index) in imageType"
+              :key="index">
+              <a href=""
+                :class="['image-type__link', {'image-type__link--active': link.isActive}]"
+                @click.prevent="setImageType(link)"
+              >{{ link.type }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <ul class="gallery-viewer__list">
@@ -37,6 +51,24 @@ export default {
     return{
       query: '',
       randomQueries: ['flowers', 'cats', 'dogs', 'bubbles', 'butterfly', 'peoples', 'winter', 'summer'],
+      imageType: [
+        {
+          type: 'all',
+          isActive: true
+        },
+        {
+          type: 'photo',
+          isActive: false
+        },
+        {
+          type: 'illustration',
+          isActive: false
+        },
+        {
+          type: 'vector',
+          isActive: false
+        }
+      ],
       images: this.$store.state.images
     }
   },
@@ -55,6 +87,9 @@ export default {
     getRandom(min, max){
       return Math.floor(Math.random() * (max - min + 1)) + min
     },
+    setImageType(link){
+      link.isActive = true;
+    }
   }
 }
 </script>
@@ -116,6 +151,28 @@ export default {
         color: #303030;
         background-color: #cccccc;
       }
+    }
+  }
+
+  .image-type {
+    &__list {
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+    }
+    &__item {
+      margin: 0 5px;
+    }
+    &__link {
+      display: block;
+      padding: 4px 12px;
+      color: #606060;
+      text-decoration: none;
+      border-radius: 20px;
+    }
+    &__link--active {
+      color: #ffffff;
+      background-color: #606060;
     }
   }
 </style>

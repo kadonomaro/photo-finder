@@ -22,6 +22,13 @@ export default new Vuex.Store({
     toggleFavorite(state, id) {
       const image = state.images.find(img => img.id === id);
       image.isFavorite = !image.isFavorite;
+
+      if (!state.favoriteImages.includes(image)) {
+        state.favoriteImages.push(image);
+      } else {
+        state.favoriteImages = state.favoriteImages.filter(img => img !== image);
+      }
+
     }
   },
   actions: {
@@ -43,7 +50,7 @@ export default new Vuex.Store({
   },
   getters: {
     favoriteImages: state => {
-      return state.images.filter(img => img.isFavorite);
+      return state.favoriteImages;
     }
   }
 
