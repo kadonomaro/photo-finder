@@ -45,9 +45,11 @@
 
     <div class="gallery-viewer__pagination">
         <pagination
+        v-model="page"
         :page-count="20"
         :container-class="'pagination'"
-      ></pagination>
+        :click-handler="changePage"
+      ></pagination>{{page}}
     </div>
   </div>
 </template>
@@ -58,6 +60,7 @@ let isLoaded = false;
 export default {
   data(){
     return{
+      page: 1,
       query: '',
       randomQueries: ['flowers', 'cats', 'dogs', 'bubbles', 'butterfly', 'peoples', 'winter', 'summer'],
       imageType: [
@@ -91,7 +94,8 @@ export default {
   methods: {
     fetchData(){
       this.$store.dispatch('fetchData', [this.query, this.imageType.find(type=>type.isActive).type]);
-      this.query = '';
+      this.page = 1;
+      // this.query = '';
     },
     getRandom(min, max){
       return Math.floor(Math.random() * (max - min + 1)) + min
@@ -101,6 +105,9 @@ export default {
         type.isActive = false;
       });
       link.isActive = true;
+    },
+    changePage(){
+      this.$store.dispatch('fetchData', [this.query, this.imageType.find(type=>type.isActive).type, this.page]);
     }
   }
 }
@@ -206,12 +213,12 @@ export default {
       color: #ffffff;
       background-color: #909090;
       &:first-child {
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
       }
       &:last-child {
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
       }
     }
     li.active {
