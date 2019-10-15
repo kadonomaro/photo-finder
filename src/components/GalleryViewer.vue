@@ -7,13 +7,15 @@
           class="search__input"
           v-model="query"
           placeholder="What would you like to find?"
-          @input="autocompleteCheck"
+          @input="checkDictionary"
         >
         <button class="search__button" @click.prevent="fetchData(query)">Search</button>
       </form>
 
       <div class="autocomplete">
-        <div v-for="(item, index) in filteredAutocomplete" :key="index">{{ item.title }}</div>
+        <ul class="autocomplete__list">
+          <li class="autocomplete__item" v-for="(item, index) in filteredDictoinary" :key="index">{{ item.title }}</li>
+        </ul>
       </div>
 
       <div class="gallery-viewer__type">
@@ -69,26 +71,14 @@ export default {
       query: '',
       randomQueries: ['flowers', 'cats', 'dogs', 'bubbles', 'butterfly', 'peoples', 'winter', 'summer'],
       imageType: [
-        {
-          type: 'all',
-          isActive: false
-        },
-        {
-          type: 'photo',
-          isActive: true
-        },
-        {
-          type: 'illustration',
-          isActive: false
-        },
-        {
-          type: 'vector',
-          isActive: false
-        }
+        {type: 'all', isActive: false},
+        {type: 'photo', isActive: true},
+        {type: 'illustration', isActive: false},
+        {type: 'vector', isActive: false}
       ],
       images: this.$store.state.images,
-      autocompleteItems: this.$store.state.queries,
-      filteredAutocomplete: []
+      queriesDictionary: this.$store.state.queriesDictionary.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)),
+      filteredDictoinary: []
     }
   },
   mounted(){
@@ -104,7 +94,7 @@ export default {
       this.page = 1;
 
       if (this.query) {
-        this.$store.commit('updateQueries', this.query);
+        this.$store.commit('updateDictionary', this.query);
       }
       // this.query = '';
     },
@@ -120,15 +110,15 @@ export default {
     changePage(){
       this.$store.dispatch('fetchData', [this.query, this.imageType.find(type=>type.isActive).type, this.page]);
     },
-    autocompleteCheck(){
-      this.autocompleteItems.forEach(item=>{
-        if (item.title.includes(this.query)) {
+    checkDictionary(){
+      this.queriesDictionary.forEach(item=>{
+        if (item.title.toLowerCase().includes(this.query.toLowerCase()) && this.query) {
           item.isActive = true;
         } else {
           item.isActive = false;
         }
       })
-      this.filteredAutocomplete = this.autocompleteItems.filter(item=>item.isActive);
+      this.filteredDictoinary = this.queriesDictionary.filter(item=>item.isActive);
     }
   }
 }
@@ -249,7 +239,25 @@ export default {
       display: block;
       padding: 8px 15px;
     }
+  }
 
+  .autocomplete {
+    max-height: 600px;
+    overflow: auto;
+    &__list {
+      margin: 0;
+      padding: 0;
+      background-color: rgba($color: #ffffff, $alpha: 0.7);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      list-style: none;
+    }
+    &__item {
+      padding: 10px;
+      &:not(:last-child) {
+        border-bottom: 1px solid #909090;
+      }
+    }
   }
 </style>
 

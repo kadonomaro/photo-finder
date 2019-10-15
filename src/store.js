@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import dictionary from '@/components/autocomplete/dictionary';
 
 Vue.use(Vuex);
 
@@ -8,7 +9,7 @@ export default new Vuex.Store({
     API_KEY: '12967020-a3deecfacc5cfa367f6aefde8',
     images: [],
     favoriteImages: [],
-    queries: []
+    queriesDictionary: dictionary
   },
   mutations: {
     updateData(state, data) {
@@ -20,9 +21,9 @@ export default new Vuex.Store({
         isFavorite: false
       });
     },
-    updateQueries(state, query) {
-      state.queries.push({
-        title: query,
+    updateDictionary(state, word) {
+      state.queriesDictionary.push({
+        title: word,
         isActive: false
       });
     },
