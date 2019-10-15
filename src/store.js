@@ -21,7 +21,10 @@ export default new Vuex.Store({
       });
     },
     updateQueries(state, query) {
-      state.queries.push(query);
+      state.queries.push({
+        title: query,
+        isActive: false
+      });
     },
     toggleFavorite(state, id) {
       const image = state.images.find(img => img.id === id);

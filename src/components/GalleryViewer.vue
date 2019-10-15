@@ -7,9 +7,14 @@
           class="search__input"
           v-model="query"
           placeholder="What would you like to find?"
+          @input="autocompleteCheck"
         >
         <button class="search__button" @click.prevent="fetchData(query)">Search</button>
       </form>
+
+      <div class="autocomplete">
+        <div v-for="(item, index) in filteredAutocomplete" :key="index">{{ item.title }}</div>
+      </div>
 
       <div class="gallery-viewer__type">
         <div class="image-type">
@@ -81,7 +86,9 @@ export default {
           isActive: false
         }
       ],
-      images: this.$store.state.images
+      images: this.$store.state.images,
+      autocompleteItems: this.$store.state.queries,
+      filteredAutocomplete: []
     }
   },
   mounted(){
@@ -112,6 +119,16 @@ export default {
     },
     changePage(){
       this.$store.dispatch('fetchData', [this.query, this.imageType.find(type=>type.isActive).type, this.page]);
+    },
+    autocompleteCheck(){
+      this.autocompleteItems.forEach(item=>{
+        if (item.title.includes(this.query)) {
+          item.isActive = true;
+        } else {
+          item.isActive = false;
+        }
+      })
+      this.filteredAutocomplete = this.autocompleteItems.filter(item=>item.isActive);
     }
   }
 }
