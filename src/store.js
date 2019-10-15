@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     API_KEY: '12967020-a3deecfacc5cfa367f6aefde8',
     images: [],
-    favoriteImages: []
+    favoriteImages: [],
+    queries: []
   },
   mutations: {
     updateData(state, data) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
         imageTags: data.tags,
         isFavorite: false
       });
+    },
+    updateQueries(state, query) {
+      state.queries.push(query);
     },
     toggleFavorite(state, id) {
       const image = state.images.find(img => img.id === id);
@@ -41,7 +45,7 @@ export default new Vuex.Store({
         .then(data => {
           for (let i = 0; i < data.hits.length; i++) {
             this.commit('updateData', data.hits[i]);
-            console.log(data);
+            // console.log(data);
           }
 
         });

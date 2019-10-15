@@ -49,7 +49,7 @@
         :page-count="20"
         :container-class="'pagination'"
         :click-handler="changePage"
-      ></pagination>{{page}}
+      ></pagination>
     </div>
   </div>
 </template>
@@ -95,6 +95,10 @@ export default {
     fetchData(){
       this.$store.dispatch('fetchData', [this.query, this.imageType.find(type=>type.isActive).type]);
       this.page = 1;
+
+      if (this.query) {
+        this.$store.commit('updateQueries', this.query);
+      }
       // this.query = '';
     },
     getRandom(min, max){
