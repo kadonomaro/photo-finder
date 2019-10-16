@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "c26c9adba52772477364",
-    "url": "/photo-finder/css/app.018e88b1.css"
+    "revision": "d6bdf246c2e5d318468d",
+    "url": "/photo-finder/css/app.54bd2894.css"
   },
   {
-    "revision": "c26c9adba52772477364",
-    "url": "/photo-finder/js/app.d61139b4.js"
+    "revision": "d6bdf246c2e5d318468d",
+    "url": "/photo-finder/js/app.48df0a3b.js"
   },
   {
     "revision": "7e9abd0ee089647c135c",
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/photo-finder/js/chunk-4fdc7357.5789d34b.js"
   },
   {
-    "revision": "19db2d3b0277e9f32c81",
-    "url": "/photo-finder/js/chunk-vendors.ab8c1e7f.js"
+    "revision": "a883a69a9f310ac680d3",
+    "url": "/photo-finder/js/chunk-vendors.b2de65b9.js"
   },
   {
     "revision": "9d10bd99978daaab04c91eb34da9a00a",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/photo-finder/img/background-1.9049adb9.svg"
   },
   {
-    "revision": "b527776cca1eabde985d2701d939c190",
+    "revision": "b45cb84b555019cf4851ec874f6eab16",
     "url": "/photo-finder/index.html"
   },
   {
