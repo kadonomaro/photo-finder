@@ -10,13 +10,19 @@
           @input="checkDictionary"
         >
         <button class="search__button" @click.prevent="fetchData(query)">Search</button>
+
+        <div class="autocomplete">
+          <ul class="autocomplete__list">
+            <li class="autocomplete__item"
+              v-for="(item, index) in filteredDictoinary"
+              :key="index"
+              @click="query = item.title"
+            >{{ item.title }}</li>
+          </ul>
+        </div>
       </form>
 
-      <div class="autocomplete">
-        <ul class="autocomplete__list">
-          <li class="autocomplete__item" v-for="(item, index) in filteredDictoinary" :key="index">{{ item.title }}</li>
-        </ul>
-      </div>
+
 
       <div class="gallery-viewer__type">
         <div class="image-type">
@@ -149,7 +155,8 @@ export default {
     }
   }
 
-.search {
+  .search {
+    position: relative;
     display: flex;
     border-radius: 20px;
     box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
@@ -242,20 +249,27 @@ export default {
   }
 
   .autocomplete {
+    position: absolute;
+    z-index: 99;
+    top: 100%;
+    left: 20px;
+    right: 20px;
     max-height: 600px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 3px 10px rgba($color: #000000, $alpha: 0.3);
     overflow: auto;
     &__list {
       margin: 0;
       padding: 0;
-      background-color: rgba($color: #ffffff, $alpha: 0.7);
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
+      background-color: rgba($color: #ffffff, $alpha: 0.8);
       list-style: none;
     }
     &__item {
       padding: 10px;
+      cursor: pointer;
       &:not(:last-child) {
-        border-bottom: 1px solid #909090;
+        border-bottom: 1px solid #cccccc;
       }
     }
   }
