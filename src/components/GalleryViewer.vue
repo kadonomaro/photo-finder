@@ -269,11 +269,14 @@ export default {
     top: 100%;
     left: 20px;
     right: 0;
-    max-height: 600px;
+    max-height: 400px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 0 3px 10px rgba($color: #000000, $alpha: 0.3);
     overflow: auto;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
     &__list {
       margin: 0;
       padding: 0;
