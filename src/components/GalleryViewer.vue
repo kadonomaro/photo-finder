@@ -2,24 +2,28 @@
   <div class="gallery-viewer">
     <div class="gallery-viewer__search">
       <form action="" class="search">
-        <input
-          type="search"
-          class="search__input"
-          v-model="query"
-          placeholder="What would you like to find?"
-          @input="checkDictionary"
-        >
+
+        <label class="search__label">
+          <input
+            type="search"
+            class="search__input"
+            v-model="query"
+            placeholder="What would you like to find?"
+            @input="checkDictionary"
+          >
+
+          <div class="autocomplete" v-show="autocompleteActive">
+            <ul class="autocomplete__list">
+              <li class="autocomplete__item"
+                v-for="(item, index) in filteredDictoinary"
+                :key="index"
+                @click="setActiveWord()"
+              >{{ item.title }}</li>
+            </ul>
+          </div>
+        </label>
         <button class="search__button" @click.prevent="fetchData(query)">Search</button>
 
-        <div class="autocomplete">
-          <ul class="autocomplete__list">
-            <li class="autocomplete__item"
-              v-for="(item, index) in filteredDictoinary"
-              :key="index"
-              @click="query = item.title"
-            >{{ item.title }}</li>
-          </ul>
-        </div>
       </form>
 
 
@@ -83,8 +87,10 @@ export default {
         {type: 'vector', isActive: false}
       ],
       images: this.$store.state.images,
+
       queriesDictionary: this.$store.state.queriesDictionary.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)),
-      filteredDictoinary: []
+      filteredDictoinary: [],
+      autocompleteActive: false
     }
   },
   mounted(){
@@ -120,11 +126,16 @@ export default {
       this.queriesDictionary.forEach(item=>{
         if (item.title.toLowerCase().includes(this.query.toLowerCase()) && this.query) {
           item.isActive = true;
+          this.autocompleteActive = true;
         } else {
           item.isActive = false;
         }
       })
       this.filteredDictoinary = this.queriesDictionary.filter(item=>item.isActive);
+    },
+    setActiveWord(){
+      this.query = event.target.textContent;
+      this.autocompleteActive = false;
     }
   }
 }
@@ -156,10 +167,14 @@ export default {
   }
 
   .search {
-    position: relative;
     display: flex;
     border-radius: 20px;
     box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
+    &__label {
+      position: relative;
+      display: block;
+      flex-grow: 1;
+    }
     &__input,
     &__button {
       padding: 8px 12px;
@@ -172,7 +187,7 @@ export default {
       }
     }
     &__input {
-      flex-grow: 1;
+      width: 100%;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
       border-right-width: 0px;
@@ -253,7 +268,7 @@ export default {
     z-index: 99;
     top: 100%;
     left: 20px;
-    right: 20px;
+    right: 0;
     max-height: 600px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
