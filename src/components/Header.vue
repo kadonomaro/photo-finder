@@ -21,7 +21,7 @@ export default {
 <style lang="scss">
 .header {
   position: fixed;
-  z-index: 9;
+  z-index: 999;
   top: 20px;
   width: 80%;
   left: 10%;

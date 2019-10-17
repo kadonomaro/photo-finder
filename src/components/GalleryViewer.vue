@@ -15,7 +15,7 @@
           <div class="autocomplete" v-show="autocompleteActive">
             <ul class="autocomplete__list">
               <li class="autocomplete__item"
-                v-for="(item, index) in filteredDictoinary"
+                v-for="(item, index) in filteredDictionary"
                 :key="index"
                 @click="setActiveWord()"
               >{{ item.title }}</li>
@@ -81,64 +81,63 @@ export default {
       query: '',
       randomQueries: ['flowers', 'cats', 'dogs', 'bubbles', 'butterfly', 'peoples', 'winter', 'summer'],
       imageType: [
-        {type: 'all', isActive: false},
-        {type: 'photo', isActive: true},
-        {type: 'illustration', isActive: false},
-        {type: 'vector', isActive: false}
+        { type: 'all', isActive: false },
+        { type: 'photo', isActive: true },
+        { type: 'illustration', isActive: false },
+        { type: 'vector', isActive: false },
       ],
       images: this.$store.state.images,
 
       queriesDictionary: this.$store.state.queriesDictionary.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)),
-      filteredDictoinary: [],
+      filteredDictionary: [],
       autocompleteActive: false
     }
   },
-  mounted(){
+  mounted() {
     if (!isLoaded) {
-      this.$store.dispatch('fetchData', [this.randomQueries[this.getRandom(0, this.randomQueries.length - 1)], this.imageType.find(type=>type.isActive).type])
+      this.$store.dispatch('fetchData', [this.randomQueries[this.getRandom(0, this.randomQueries.length - 1)], this.imageType.find(type => type.isActive).type]);
       isLoaded = true;
     }
 
   },
   methods: {
-    fetchData(){
-      this.$store.dispatch('fetchData', [this.query, this.imageType.find(type=>type.isActive).type]);
+    fetchData() {
+      this.$store.dispatch('fetchData', [this.query, this.imageType.find(type => type.isActive).type]);
       this.page = 1;
 
-      if (this.query) {
-        this.$store.commit('updateDictionary', this.query);
-      }
       // this.query = '';
     },
-    getRandom(min, max){
-      return Math.floor(Math.random() * (max - min + 1)) + min
+    getRandom(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    setImageType(link){
-      this.imageType.forEach(type=>{
+    setImageType(link) {
+      this.imageType.forEach(type => {
         type.isActive = false;
       });
       link.isActive = true;
     },
-    changePage(){
-      this.$store.dispatch('fetchData', [this.query, this.imageType.find(type=>type.isActive).type, this.page]);
+    changePage() {
+      this.$store.dispatch('fetchData', [this.query, this.imageType.find(type => type.isActive).type, this.page]);
     },
-    checkDictionary(){
-      this.queriesDictionary.forEach(item=>{
-        if (item.title.toLowerCase().includes(this.query.toLowerCase()) && this.query) {
-          item.isActive = true;
+
+    checkDictionary() {
+      this.queriesDictionary.forEach(query => {
+        if (query.title.toLowerCase().includes(this.query.toLowerCase()) && this.query) {
+          query.isActive = true;
           this.autocompleteActive = true;
         } else {
-          item.isActive = false;
+          query.isActive = false;
         }
-      })
-      this.filteredDictoinary = this.queriesDictionary.filter(item=>item.isActive);
+      });
+      this.filteredDictionary = this.queriesDictionary.filter(item => item.isActive);
     },
-    setActiveWord(){
+    setActiveWord() {
       this.query = event.target.textContent;
       this.autocompleteActive = false;
-    }
-  }
-}
+    },
+
+  },
+};
 </script>
 
 <style lang="scss">
@@ -292,4 +291,3 @@ export default {
     }
   }
 </style>
-
