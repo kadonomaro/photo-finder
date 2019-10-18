@@ -10,23 +10,13 @@
             v-model="query"
             placeholder="What would you like to find?"
             @input="checkDictionary"
+            @set-query=""
           >
-
-          <div class="autocomplete" v-show="autocompleteActive">
-            <ul class="autocomplete__list">
-              <li class="autocomplete__item"
-                v-for="(item, index) in filteredDictionary"
-                :key="index"
-                @click="setActiveWord()"
-              >{{ item.title }}</li>
-            </ul>
-          </div>
+          <app-autocomplete :query="query" ref="autocomplete"></app-autocomplete>
         </label>
         <button class="search__button" @click.prevent="fetchData(query)">Search</button>
 
       </form>
-
-
 
       <div class="gallery-viewer__type">
         <div class="image-type">
@@ -88,9 +78,6 @@ export default {
       ],
       images: this.$store.state.images,
 
-      queriesDictionary: this.$store.state.queriesDictionary.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)),
-      filteredDictionary: [],
-      autocompleteActive: false
     }
   },
   mounted() {
@@ -121,21 +108,8 @@ export default {
     },
 
     checkDictionary() {
-      this.queriesDictionary.forEach(query => {
-        if (query.title.toLowerCase().includes(this.query.toLowerCase()) && this.query) {
-          query.isActive = true;
-          this.autocompleteActive = true;
-        } else {
-          query.isActive = false;
-        }
-      });
-      this.filteredDictionary = this.queriesDictionary.filter(item => item.isActive);
+      this.$refs.autocomplete.checkDictionary()
     },
-    setActiveWord() {
-      this.query = event.target.textContent;
-      this.autocompleteActive = false;
-    },
-
   },
 };
 </script>
@@ -259,35 +233,6 @@ export default {
     a {
       display: block;
       padding: 8px 15px;
-    }
-  }
-
-  .autocomplete {
-    position: absolute;
-    z-index: 99;
-    top: 100%;
-    left: 20px;
-    right: 0;
-    max-height: 400px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 0 3px 10px rgba($color: #000000, $alpha: 0.3);
-    overflow: auto;
-      &::-webkit-scrollbar {
-        width: 0;
-      }
-    &__list {
-      margin: 0;
-      padding: 0;
-      background-color: rgba($color: #ffffff, $alpha: 0.8);
-      list-style: none;
-    }
-    &__item {
-      padding: 10px;
-      cursor: pointer;
-      &:not(:last-child) {
-        border-bottom: 1px solid #cccccc;
-      }
     }
   }
 </style>

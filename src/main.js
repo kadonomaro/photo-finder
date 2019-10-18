@@ -14,6 +14,7 @@ import Nav from './components/Nav.vue';
 import GalleryViewer from './components/GalleryViewer';
 import Favorite from './components/Favorite';
 import Picture from './components/Picture.vue';
+import Autocomplete from './components/autocomplete/Autocomplete.vue';
 
 Vue.config.productionTip = false;
 
@@ -25,6 +26,7 @@ Vue.component('gallery-viewer', GalleryViewer);
 Vue.component('favorite-image', Favorite);
 Vue.component('app-picture', Picture);
 Vue.component('pagination', Pagination);
+Vue.component('app-autocomplete', Autocomplete);
 
 new Vue({
   router,
