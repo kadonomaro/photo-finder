@@ -10,9 +10,8 @@
             v-model="query"
             placeholder="What would you like to find?"
             @input="checkDictionary"
-            @set-query=""
           >
-          <app-autocomplete :query="query" ref="autocomplete"></app-autocomplete>
+          <app-autocomplete :query="query" ref="autocomplete" @set-query="setQuery"></app-autocomplete>
         </label>
         <button class="search__button" @click.prevent="fetchData(query)">Search</button>
 
@@ -106,10 +105,12 @@ export default {
     changePage() {
       this.$store.dispatch('fetchData', [this.query, this.imageType.find(type => type.isActive).type, this.page]);
     },
-
     checkDictionary() {
       this.$refs.autocomplete.checkDictionary()
     },
+    setQuery(title){
+      this.query = title;
+    }
   },
 };
 </script>

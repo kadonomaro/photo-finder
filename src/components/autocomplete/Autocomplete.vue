@@ -4,7 +4,7 @@
       <li class="autocomplete__item"
         v-for="(item, index) in filteredDictionary"
         :key="index"
-        @click="setActiveWord()"
+        @click="setActiveWord(item.title)"
       >{{ item.title }}</li>
     </ul>
   </div>
@@ -32,9 +32,8 @@ export default {
       });
       this.filteredDictionary = this.queriesDictionary.filter(item => item.isActive);
     },
-    setActiveWord() {
-      // this.query = event.target.textContent;
-      this.$emit('set-query', event.target.textContent)
+    setActiveWord(title) {
+      this.$emit('set-query', title)
       this.autocompleteActive = false;
     },
   }
