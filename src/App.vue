@@ -11,6 +11,7 @@
 <style lang="scss">
 .container {
   flex-grow: 1;
+  width: 100%;
 	max-width: 1600px;
 	margin: 0 auto;
   padding: 20px 10px;
