@@ -27,19 +27,15 @@ export default new Vuex.Store({
         isActive: false
       });
     },
-    //needs to be fixed
     toggleFavorite(state, [id, index]) {
-      const image = state.images.find(img => img.id === id);
+      const image = state.images.find(img => img.id === id) || state.favoriteImages.find(img => img.id === id);
 
       if (image && !state.favoriteImages.includes(image)) {
-        state.favoriteImages.push(image);
-        image.isFavorite = !image.isFavorite;
+        addToFavorite(state, image);
       }
-      else if (index) {
-        state.favoriteImages[index].isFavorite = false;
-        state.favoriteImages.splice(index, 1);
+      else {
+        removeFromFavorite(state, index);
       }
-
     },
   },
   actions: {
@@ -65,3 +61,12 @@ export default new Vuex.Store({
   }
 
 });
+
+function addToFavorite(state, image) {
+  state.favoriteImages.push(image);
+  image.isFavorite = !image.isFavorite;
+}
+function removeFromFavorite(state, index) {
+  state.favoriteImages[index].isFavorite = false;
+  state.favoriteImages.splice(index, 1);
+}
