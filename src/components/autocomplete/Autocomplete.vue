@@ -1,5 +1,5 @@
 <template>
-  <div class="autocomplete" v-show="autocompleteActive">
+  <div class="autocomplete" v-show="isActive">
     <ul class="autocomplete__list">
       <li class="autocomplete__item"
         v-for="(item, index) in filteredDictionary"
@@ -12,32 +12,31 @@
 
 <script>
 export default {
-  props: ['query'],
   data() {
     return {
       queriesDictionary: this.$store.state.queriesDictionary.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)),
       filteredDictionary: [],
-      autocompleteActive: false
+      isActive: false
     }
   },
   methods: {
-    checkDictionary() {
-      this.queriesDictionary.forEach(query => {
-        if (query.title.toLowerCase().includes(this.query.toLowerCase()) && this.query) {
-          query.isActive = true;
-        this.autocompleteActive = true;
+    checkDictionary(query) {
+      this.queriesDictionary.forEach(word => {
+        if (word.title.toLowerCase().includes(query.toLowerCase()) && query) {
+          word.isActive = true;
+          this.isActive = true;
         } else {
-          query.isActive = false;
+          word.isActive = false;
         }
       });
-      this.filteredDictionary = this.queriesDictionary.filter(item => item.isActive);
+      this.filteredDictionary = this.queriesDictionary.filter(word => word.isActive);
     },
     setActiveWord(title) {
       this.$emit('set-query', title)
-      this.autocompleteActive = false;
+      this.isActive = false;
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">

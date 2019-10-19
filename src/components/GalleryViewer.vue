@@ -106,7 +106,7 @@ export default {
       this.$store.dispatch('fetchData', [this.query, this.imageType.find(type => type.isActive).type, this.page]);
     },
     checkDictionary() {
-      this.$refs.autocomplete.checkDictionary()
+      this.$refs.autocomplete.checkDictionary(this.query);
     },
     setQuery(title){
       this.query = title;
