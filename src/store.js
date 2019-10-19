@@ -27,17 +27,20 @@ export default new Vuex.Store({
         isActive: false
       });
     },
-    toggleFavorite(state, id) {
+    //needs to be fixed
+    toggleFavorite(state, [id, index]) {
       const image = state.images.find(img => img.id === id);
-      image.isFavorite = !image.isFavorite;
 
-      if (!state.favoriteImages.includes(image)) {
+      if (image && !state.favoriteImages.includes(image)) {
         state.favoriteImages.push(image);
-      } else {
-        state.favoriteImages = state.favoriteImages.filter(img => img !== image);
+        image.isFavorite = !image.isFavorite;
+      }
+      else if (index) {
+        state.favoriteImages[index].isFavorite = false;
+        state.favoriteImages.splice(index, 1);
       }
 
-    }
+    },
   },
   actions: {
     async fetchData(state, [query, type, page]) {

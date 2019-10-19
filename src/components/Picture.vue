@@ -11,8 +11,8 @@
       </div>
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
       <div class="picture__footer">
-        <button :class="['picture__like', {'picture__like--active': isFavorite}]" aria-label="Like picture" @click="toggleFavorite(id)"></button>
-        <a :href="largeImage" class="picture__link">Download</a>
+        <button :class="['picture__like', {'picture__like--active': isFavorite}]" aria-label="Like picture" @click="toggleFavorite(id, index)"></button>
+        <a :href="largeImage" class="picture__link" target="_blank">Download</a>
       </div>
     </li>
   </div>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  props: ['id', 'previewImage', 'largeImage', 'imageTag', 'meta', 'isFavorite', 'type'],
+  props: ['id', 'previewImage', 'largeImage', 'imageTag', 'meta', 'isFavorite', 'type', 'index'],
   data() {
     return {
 
@@ -30,8 +30,8 @@ export default {
     fetchData(props){
       this.$store.dispatch('fetchData', props);
     },
-    toggleFavorite(id){
-      this.$store.commit('toggleFavorite', id);
+    toggleFavorite(id, index){
+      this.$store.commit('toggleFavorite', [id, index]);
     }
   }
 };

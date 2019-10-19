@@ -31,8 +31,8 @@ export default {
       });
       this.filteredDictionary = this.queriesDictionary.filter(word => word.isActive);
     },
-    setActiveWord(title) {
-      this.$emit('set-query', title)
+    setActiveWord(word) {
+      this.$emit('set-query', word)
       this.isActive = false;
     },
   },

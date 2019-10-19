@@ -56,6 +56,7 @@
       border-radius: 50px;
       text-decoration: none;
       transition: color 0.2s ease-in, background-color 0.2s ease-in;
+      -webkit-tap-highlight-color: transparent;
       &:hover {
         color: #ffffff;
         background-color: #606060;
@@ -75,13 +76,14 @@
       }
       &__list {
         position: absolute;
-        bottom: -120px;
+        bottom: -100px;
         left: 0;
         display: none;
         flex-direction: column;
         width: 100%;
         background-color: #ffffff;
         border-radius: 20px;
+        box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.3);
       }
       &__list--active {
         display: block;

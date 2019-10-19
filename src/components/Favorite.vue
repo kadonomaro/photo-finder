@@ -2,7 +2,7 @@
   <div class="favorite-image">
     <app-picture
       class="favorite-image__item"
-      v-for="image in favoriteImages"
+      v-for="(image, index) in favoriteImages"
       :key="image.id"
       :previewImage="image.previewImageSource"
       :largeImage="image.largeImageSource"
@@ -10,6 +10,7 @@
       :id="image.id"
       :meta="false"
       :isFavorite="image.isFavorite"
+      :index = "index"
     ></app-picture>
   </div>
 </template>
