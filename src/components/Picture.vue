@@ -13,6 +13,7 @@
       <div class="picture__footer">
         <button :class="['picture__like', {'picture__like--active': isFavorite}]" aria-label="Like picture" @click="toggleFavorite(id, index)"></button>
         <a :href="largeImage" class="picture__link" target="_blank">Download</a>
+        <button @click="openModal">Open</button>
       </div>
     </li>
   </div>
@@ -27,11 +28,14 @@ export default {
     };
   },
   methods: {
-    fetchData(props){
+    fetchData(props) {
       this.$store.dispatch('fetchData', props);
     },
-    toggleFavorite(id, index){
+    toggleFavorite(id, index) {
       this.$store.commit('toggleFavorite', [id, index]);
+    },
+    openModal() {
+      this.$modal.show('image-modal');
     }
   }
 };

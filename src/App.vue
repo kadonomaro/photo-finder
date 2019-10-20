@@ -5,8 +5,19 @@
 			<router-view/>
 		</div>
     <app-footer></app-footer>
+    <image-modal/>
   </div>
+
 </template>
+
+<script>
+import ImageModal from './components/ImageModal';
+export default {
+  components: {
+    ImageModal
+  }
+}
+</script>
 
 <style lang="scss">
 .container {
@@ -45,3 +56,4 @@
   }
 }
 </style>
+

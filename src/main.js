@@ -6,6 +6,7 @@ import store from './store';
 import "./app.css";
 import './registerServiceWorker';
 import './directives';
+import VModal from 'vue-js-modal';
 
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
@@ -27,6 +28,14 @@ Vue.component('favorite-image', Favorite);
 Vue.component('app-picture', Picture);
 Vue.component('pagination', Pagination);
 Vue.component('app-autocomplete', Autocomplete);
+
+Vue.use(VModal, {
+  dialog: true,
+  dynamic: true,
+  dynamicDefaults: {
+    foo: 'foo'
+  }
+});
 
 new Vue({
   router,
