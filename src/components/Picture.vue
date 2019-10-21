@@ -35,7 +35,22 @@ export default {
       this.$store.commit('toggleFavorite', [id, index]);
     },
     openModal() {
-      this.$modal.show('image-modal');
+      this.$modal.show({
+        template: `
+          <div class="image-modal">
+            <div class="image-modal__image">
+              <img :src="imageSource" alt="">
+            </div>
+            <div class="image-modal__footer">
+              <button class="image-modal__button">Download</button>
+              <button class="image-modal__button">Close</button>
+            </div>
+          </div>
+        `,
+        props: ['imageSource',]
+      }, {
+        imageSource: this.largeImage
+      })
     }
   }
 };

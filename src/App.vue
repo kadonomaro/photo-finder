@@ -5,17 +5,15 @@
 			<router-view/>
 		</div>
     <app-footer></app-footer>
-    <image-modal/>
+    <modals-container/>
   </div>
 
 </template>
 
 <script>
-import ImageModal from './components/ImageModal';
+
 export default {
-  components: {
-    ImageModal
-  }
+
 }
 </script>
 
@@ -26,6 +24,7 @@ export default {
 	max-width: 1600px;
 	margin: 0 auto;
   padding: 20px 10px;
+  box-sizing: border-box;
 }
 #app {
   position: relative;
@@ -53,6 +52,21 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.5;
+  }
+  .image-modal {
+
+    img {
+      max-width: 100%;
+    }
+    &__image {
+
+    }
+    &__footer {
+
+    }
+    &__button {
+
+    }
   }
 }
 </style>

@@ -33,8 +33,9 @@ Vue.use(VModal, {
   dialog: true,
   dynamic: true,
   dynamicDefaults: {
-    foo: 'foo'
-  }
+    width: '90%',
+    height: '90%'
+  },
 });
 
 new Vue({
