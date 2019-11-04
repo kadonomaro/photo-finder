@@ -53,16 +53,20 @@ export default {
     background-size: cover;
     opacity: 0.5;
   }
-  .image-modal {
 
+  .v--modal {
+    background-color: transparent;
+  }
+  .image-modal {
+    height: 100%;
     img {
       display: block;
-      // max-width: 100%;
       width: 100%;
-      // height: 700px;
+      height: 100%;
+      object-fit: cover;
     }
     &__image {
-
+      height: 100%;
     }
     &__footer {
 

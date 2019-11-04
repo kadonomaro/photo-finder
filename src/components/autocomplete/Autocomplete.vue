@@ -63,6 +63,10 @@ export default {
     &__item {
       padding: 10px;
       cursor: pointer;
+      transition: background-color 0.2s ease-in;
+      &:hover {
+        background-color: rgba($color: #606060, $alpha: 0.3);
+      }
       &:not(:last-child) {
         border-bottom: 1px solid #cccccc;
       }

@@ -12,7 +12,7 @@
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
       <div class="picture__footer">
         <button :class="['picture__like', {'picture__like--active': isFavorite}]" aria-label="Like picture" @click="toggleFavorite(id, index)"></button>
-        <a :href="download" class="picture__link" @click.prevent="downloadImage(largeImage, imageTag)">Download</a>
+        <a class="picture__link" :href="download" @click.prevent="downloadImage(largeImage, imageTag)" download="filename.jpg">Download</a>
         <button class="picture__link" @click="openModal">Open</button>
       </div>
     </li>
@@ -40,9 +40,7 @@ export default {
       }).then(blob => {
         return URL.createObjectURL(blob);
       }).then(image=>{
-        // return image;
         this.download = image;
-        console.log(this.download);
       })
 
     },
