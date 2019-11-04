@@ -5,6 +5,8 @@
         v-for="(item, index) in filteredDictionary"
         :key="index"
         @click="setActiveWord(item.title)"
+        @keypress.enter="setActiveWord(item.title)"
+        tabindex="0"
       >{{ item.title }}</li>
     </ul>
   </div>
@@ -64,8 +66,10 @@ export default {
       padding: 10px;
       cursor: pointer;
       transition: background-color 0.2s ease-in;
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: rgba($color: #606060, $alpha: 0.3);
+        outline: none;
       }
       &:not(:last-child) {
         border-bottom: 1px solid #cccccc;

@@ -68,12 +68,6 @@ export default {
     &__image {
       height: 100%;
     }
-    &__footer {
-
-    }
-    &__button {
-
-    }
   }
 }
 </style>
