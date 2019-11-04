@@ -12,8 +12,8 @@
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
       <div class="picture__footer">
         <button :class="['picture__like', {'picture__like--active': isFavorite}]" aria-label="Like picture" @click="toggleFavorite(id, index)"></button>
-        <a :href="largeImage" class="picture__link" target="_blank">Download</a>
-        <button @click="openModal">Open</button>
+        <a :href="download" class="picture__link" @click.prevent="downloadImage(largeImage, imageTag)">Download</a>
+        <button class="picture__link" @click="openModal">Open</button>
       </div>
     </li>
   </div>
@@ -24,7 +24,7 @@ export default {
   props: ['id', 'previewImage', 'largeImage', 'imageTag', 'meta', 'isFavorite', 'type', 'index'],
   data() {
     return {
-
+      download: '',
     };
   },
   methods: {
@@ -34,6 +34,18 @@ export default {
     toggleFavorite(id, index) {
       this.$store.commit('toggleFavorite', [id, index]);
     },
+    downloadImage(imageURL, filename){
+      fetch(imageURL).then(response => {
+        return response.blob();
+      }).then(blob => {
+        return URL.createObjectURL(blob);
+      }).then(image=>{
+        // return image;
+        this.download = image;
+        console.log(this.download);
+      })
+
+    },
     openModal() {
       this.$modal.show({
         template: `
@@ -41,15 +53,14 @@ export default {
             <div class="image-modal__image">
               <img :src="imageSource" alt="">
             </div>
-            <div class="image-modal__footer">
-              <button class="image-modal__button">Download</button>
-              <button class="image-modal__button">Close</button>
-            </div>
           </div>
         `,
         props: ['imageSource',]
       }, {
         imageSource: this.largeImage
+      },{
+        width: '90%',
+        height: '90%'
       })
     }
   }
@@ -107,9 +118,14 @@ export default {
       color: #ffffff;
       font-size: 18px;
       text-decoration: none;
+      background-color: transparent;
       border: 1px solid #ffffff;
       border-radius: 20px;
-      transition: all 0.2s ease-in;
+      transition: color 0.2s ease-in, background-color 0.2s ease-in;
+      cursor: pointer;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
       &:hover {
         color: #303030;
         background-color: #ffffff;

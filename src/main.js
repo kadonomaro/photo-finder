@@ -33,8 +33,7 @@ Vue.use(VModal, {
   dialog: true,
   dynamic: true,
   dynamicDefaults: {
-    width: '90%',
-    height: '90%'
+
   },
 });
 
