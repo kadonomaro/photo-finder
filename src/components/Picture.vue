@@ -12,7 +12,7 @@
       <img class="picture__image" :src="previewImage" :alt="imageTag" />
       <div class="picture__footer">
         <button :class="['picture__like', {'picture__like--active': isFavorite}]" aria-label="Like picture" @click="toggleFavorite(id, index)"></button>
-        <a class="picture__link" :href="download" @click.prevent="downloadImage(largeImage, imageTag)" download="filename.jpg">Download</a>
+        <!-- <a class="picture__link" :href="download" @click.prevent="downloadImage(largeImage, imageTag)" download="filename.jpg">Download</a> -->
         <button class="picture__link" @click="openModal">Open</button>
       </div>
     </li>

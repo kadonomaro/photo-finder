@@ -48,7 +48,6 @@ export default new Vuex.Store({
         .then(data => {
           for (let i = 0; i < data.hits.length; i++) {
             this.commit('updateData', data.hits[i]);
-            // console.log(data.hits);
           }
 
         });
