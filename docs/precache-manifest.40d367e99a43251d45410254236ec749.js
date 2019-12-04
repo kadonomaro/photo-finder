@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "cff5e99fe251fa965de9",
+    "revision": "9cb050a0f8e4dce42037",
     "url": "/photo-finder/css/app.dce793d8.css"
   },
   {
-    "revision": "cff5e99fe251fa965de9",
-    "url": "/photo-finder/js/app.709a7ce6.js"
+    "revision": "9cb050a0f8e4dce42037",
+    "url": "/photo-finder/js/app.0b28b6a6.js"
   },
   {
     "revision": "ca5cfb3b4b5531646194",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/photo-finder/img/background-1.9049adb9.svg"
   },
   {
-    "revision": "bde11f9a5bc8b53a683b1f465f2390c6",
+    "revision": "85b1a4b89c8f019bbb43d9d8e34667ef",
     "url": "/photo-finder/index.html"
   },
   {
